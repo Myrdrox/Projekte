@@ -1,0 +1,83 @@
+namespace Währungsrechner
+{
+    class Program
+    {
+        static void Main()
+        {
+
+            MainMenu();
+        }
+        static void MainMenu()
+        {
+            Console.WriteLine("Gebe einen Geldbetrag ein: ");
+            decimal amount =Convert.ToDecimal(Console.ReadLine());
+            Console.WriteLine();
+
+            Console.WriteLine("Wähle die Währung");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("[1] Euro");
+            Console.WriteLine("[2] US-Dollar");
+            Console.WriteLine("[3] Britische Pfund");
+            Console.ResetColor();
+            Console.Write("Auswahl: ");
+            int input  = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine();
+
+            Console.WriteLine("Wähle die gewünschte Währung:");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("[1] Euro");
+            Console.WriteLine("[2] US-Dollar");
+            Console.WriteLine("[3] Britische Pfund");
+            Console.ResetColor();
+            Console.Write("Auswahl: ");
+            int output = Convert.ToInt32(Console.ReadLine());
+
+            Console.Clear();
+
+            Exchange(amount, input, output);
+            
+        }
+        static void Exchange(decimal amount, int input, int output)
+        {
+            decimal eurUsd = 1.12M;
+            decimal eurGbp = 85.05M;
+            decimal usdEur = 0.89M;
+            decimal usdGbp = 75.69M;
+            decimal gbpEur = 1.18M;
+            decimal gbpUsd = 1.32M;
+
+            if (input == output )
+            {
+                Console.WriteLine("Du hast die selben Währungen ausgewählt!");
+            }
+            else if (input == 1 && output == 2)
+            {
+                Console.WriteLine("{0} Euro entsprechen {1} Dollar", amount,  amount * eurUsd);
+            }
+            else if (input == 1 && output == 3)
+            {
+                Console.WriteLine("{0} Euro entsprechen {1} Britischen Pfund", amount,  amount * eurGbp);
+            }
+            else if (input == 2 && output == 1)
+            {
+                Console.WriteLine("{0} US-Dollar entsprechen {1} Euro", amount, amount * usdEur);
+            }
+            else if (input == 2 && output == 3)
+            {
+                Console.WriteLine("{0} US-Dollar entsprechen {1} Britischen Pfund", amount, amount * usdGbp);
+            }
+            else if (input == 3 && output == 1)
+            {
+                Console.WriteLine("{0} Britische Pfund entsprechen {1} Euro", amount, amount * gbpEur);
+            }
+            else if (input == 3 && output == 2)
+            {
+                Console.WriteLine("{0} Britische Pfund entsprechen {1} US-Dollar", amount, input * gbpUsd);
+            }
+            Console.ReadKey();
+            Console.Clear();
+        }
+        
+    }
+}
